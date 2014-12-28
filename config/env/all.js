@@ -12,7 +12,7 @@ module.exports = {
 	sessionCollection: 'sessions',
 	assets: {
 		lib: {
-			css: [],
+			css: ['public/lib/components-font-awesome/css/font-awesome.min.css'],
 			js: [
 				'public/lib/angular/angular.js',
 				'public/lib/angular-resource/angular-resource.js',
