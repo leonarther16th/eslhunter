@@ -31,4 +31,8 @@ var ArticleSchema = new Schema({
 	}
 });
 
+ArticleSchema.methods.getLast = function(){
+	return this.model('Article').find({'title': 'dsfsdf'});
+};
+
 mongoose.model('Article', ArticleSchema);

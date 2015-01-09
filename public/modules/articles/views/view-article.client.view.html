@@ -1,22 +1,62 @@
-<section data-ng-controller="ArticlesController" data-ng-init="findOne()">
-	<div class="page-header">
-		<h1 data-ng-bind="article.title"></h1>
-	</div>
-	<div class="pull-right" data-ng-show="authentication.user._id == article.user._id">
-		<a class="btn btn-primary" href="/#!/articles/{{article._id}}/edit">
-			<i class="glyphicon glyphicon-edit"></i>
-		</a>
-		<a class="btn btn-primary" data-ng-click="remove();">
-			<i class="glyphicon glyphicon-trash"></i>
-		</a>
-	</div>
-	<small>
-		<em class="text-muted">
-			Posted on
-			<span data-ng-bind="article.created | date:'mediumDate'"></span>
-			by
-			<span data-ng-bind="article.user.displayName"></span>
-		</em>
-	</small>
-	<p class="lead" data-ng-bind="article.content"></p>
+<section class="container" data-ng-controller="ArticlesController"   data-ng-init="findOne()">
+	<div class="col-xs-12  col-sm-12 col-md-12 col-lg-8 col-lg-offset-2">
+		
+		<div class="well well-no-padding">
+			<section>
+				
+				<h3 class="question-title" data-ng-bind="article.title"></h3>
+				
+				
+				<p class="question-title-p" data-ng-bind="article.content"></p>
+				<div class="question-bottom">
+					<small class="question-time">
+					<span data-ng-bind="article.created | date:'medium'"></span>
+					</small>
+					<div class="pull-right buttons" >
+						<a class="btn btn-link btn-control" href="/#!/articles/{{article._id}}">
+							<i class="fa fa-hand-o-up"></i> <span class="badge badge-stat">409</span>
+						</a>
+						<a class="btn btn-link btn-control" href="/#!/articles/{{article._id}}">
+							<i class="fa fa-thumb-tack"></i> <span class="badge badge-stat">38</span>
+						</a>
+						<a class="btn btn-link btn-control" href="/#!/articles/{{article._id}}/edit" data-ng-show="authentication.user._id == article.user._id">
+							<i class="glyphicon glyphicon-edit"></i>
+						</a>
+						<a class="btn btn-link btn-control" data-ng-click="remove();" data-ng-show="authentication.user._id == article.user._id">
+							<i class="glyphicon glyphicon-trash"></i>
+						</a>
+					</div>
+				</div>	
+			</section>
+		</div><!-- well -->
+
+			<section>
+			<div class="list-group">
+				<div class="list-group-item">
+					
+						<form class="form-vertical" data-ng-submit="createAnswer()" novalidate>
+							<fieldset>
+								<div class="form-group">
+									
+									<div class="controls">
+										<textarea type="textarea" data-ng-model="content" id="content" class="form-control" placeholder="Answer" required></textarea>
+									</div>
+									
+								</div>
+								<div class="form-group">
+									<button type="submit" class="btn btn-sm btn-success" >Post answer</button>
+								</div>
+								<div data-ng-show="error" class="text-danger">
+									<strong data-ng-bind="error"></strong>
+								</div>
+							</fieldset>
+						</form>
+					
+				</div>
+			
+			<div ng-include="'modules/articles/views/_answers-article.client.view.html'"></div>
+			</div>
+
+			</section>
+	</div> <!-- col -->
 </section>

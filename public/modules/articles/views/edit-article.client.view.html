@@ -1,26 +1,31 @@
+<section class="container">
+<div class="col-xs-12  col-sm-12 col-md-12 col-lg-8 col-lg-offset-2">
+		
+		<div class="well well-no-padding">
 <section data-ng-controller="ArticlesController" data-ng-init="findOne()">
-	<div class="page-header">
-		<h1>Edit Article</h1>
-	</div>
-	<div class="col-md-12">
-		<form name="articleForm" class="form-horizontal" data-ng-submit="update(articleForm.$valid)" novalidate>
+	
+		<h3 class="question-title">Edit Article</h3>
+		
+	
+	
+		<form class="question-title-p" name="articleForm" class="form-horizontal" data-ng-submit="update(articleForm.$valid)" novalidate>
 			<fieldset>
 				<div class="form-group" ng-class="{ 'has-error' : submitted && articleForm.title.$invalid}">
-					<label class="control-label" for="title">Title</label>
+					<label class="control-label" for="title">Question</label>
 					<div class="controls">
-						<input name="title" type="text" data-ng-model="article.title" id="title" class="form-control" placeholder="Title" required>
+						<input name="title" type="text" data-ng-model="article.title" id="title" class="form-control" placeholder="Title" required >
 					</div>
 					<div ng-show="submitted && articleForm.title.$invalid" class="help-block">
-						<p ng-show="articleForm.title.$error.required" class="text-danger">Title is required</p>
+						<p ng-show="articleForm.title.$error.required" class="text-danger">Question is required</p>
 					</div>
 				</div>
 				<div class="form-group" ng-class="{ 'has-error' : submitted && articleForm.content.$invalid}">
-					<label class="control-label" for="content">Content</label>
+					<label class="control-label" for="content">Details</label>
 					<div class="controls">
 						<textarea name="content" data-ng-model="article.content" id="content" class="form-control" cols="30" rows="10" placeholder="Content" required></textarea>
 					</div>
 					<div ng-show="submitted && articleForm.content.$invalid" class="help-block">
-						<p ng-show="articleForm.content.$error.required" class="text-danger">Content is required</p>
+						<p ng-show="articleForm.content.$error.required" class="text-danger">Details is required</p>
 					</div>
 				</div>
 				<div class="form-group">
@@ -31,5 +36,8 @@
 				</div>
 			</fieldset>
 		</form>
-	</div>
+	
+</section>
+</div><!-- well -->
+			</div> <!-- col -->
 </section>

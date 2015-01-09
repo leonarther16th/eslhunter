@@ -1,0 +1,9 @@
+<a data-ng-repeat="article in articles" class="list-group-item" ng-href='/#!/articles/{{article._id}}' >
+	<small class="list-group-item-text posted-time">
+	<span data-ng-bind="article.created | date:'medium'"></span>
+	</small>
+	<h4 class="list-group-item-heading" data-ng-bind="article.title"></h4>
+	<p class="list-group-item-text" data-ng-bind="article.content | limitTo:200">
+	
+	</p>
+</a>

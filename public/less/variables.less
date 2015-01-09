@@ -11,14 +11,16 @@
 @gray-darker:            lighten(@gray-base, 13.5%); // #222
 @gray-dark:              #7b8a8b;   // #333
 @gray:                   #95a5a6; // #555
-@gray-light:             #b4bcc2;   // #999
+@gray-light:             #b2bac2;   // #999
 @gray-lighter:           #ecf0f1; // #eee
+@gray-dark-text:				 #657380;
+@gray-background:		 #edeff0;
 
-@brand-primary:         #2C3E50;
-@brand-success:         #18BC9C;
+@brand-primary:         #2c0028;
+@brand-success:         #5cb860;//18BC9C
 @brand-info:            #3498DB;
 @brand-warning:         #F39C12;
-@brand-danger:          #E74C3C;
+@brand-danger:          #e15258;
 
 
 //== Scaffolding
@@ -42,8 +44,7 @@
 //
 //## Font, line-height, and color for body text, headings, and more.
 
-@font-family-sans-serif:  "Lato", "Helvetica Neue", Helvetica, Arial, sans-serif;
-@font-family-serif:       Georgia, "Times New Roman", Times, serif;
+
 //** Default monospace fonts for `<code>`, `<kbd>`, and `<pre>`.
 @font-family-monospace:   Menlo, Monaco, Consolas, "Courier New", monospace;
 @font-family-base:        @font-family-sans-serif;
@@ -380,16 +381,16 @@
 
 // Inverted navbar
 // Reset inverted navbar basics
-@navbar-inverse-color:                      #fff;
-@navbar-inverse-bg:                         @brand-success;
+@navbar-inverse-color:                      @brand-primary;
+@navbar-inverse-bg:                         #fff;
 @navbar-inverse-border:                     transparent;
 
 // Inverted navbar links
-@navbar-inverse-link-color:                 #fff;
+@navbar-inverse-link-color:                 @brand-primary;
 @navbar-inverse-link-hover-color:           @brand-primary;
 @navbar-inverse-link-hover-bg:              transparent;
-@navbar-inverse-link-active-color:          #fff;
-@navbar-inverse-link-active-bg:             darken(@navbar-inverse-bg, 5%);
+@navbar-inverse-link-active-color:          @brand-primary;
+@navbar-inverse-link-active-bg:             transparent;
 @navbar-inverse-link-disabled-color:        #ccc;
 @navbar-inverse-link-disabled-bg:           transparent;
 
@@ -861,5 +862,5 @@
 @font-family-sans-serif:  "proxima-nova-soft", Helvetica, Arial, sans-serif;
 @font-family-serif:       Georgia, "Times New Roman", Times, serif;
 @navbar-default-color: #000;
-@navbar-default-bg:   #e9eaed;
+
 @well-bg: #fff;

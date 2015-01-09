@@ -20,6 +20,14 @@ angular.module('articles').config(['$stateProvider',
 		state('editArticle', {
 			url: '/articles/:articleId/edit',
 			templateUrl: 'modules/articles/views/edit-article.client.view.html'
+		}).
+		state('asked', {
+			url: '/asked',
+			templateUrl: 'modules/articles/views/asked-articles.client.view.html'
+		}).
+		state('search', {
+			url: '/search/:searchText',
+			templateUrl: 'modules/articles/views/search-articles.client.view.html'
 		});
 	}
 ]);

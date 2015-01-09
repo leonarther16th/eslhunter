@@ -6,7 +6,11 @@
 var mongoose = require('mongoose'),
 	errorHandler = require('./errors.server.controller'),
 	Article = mongoose.model('Article'),
+	PostAssociation = mongoose.model('PostAssociation'),
+	Answer = mongoose.model('Answer'),
 	_ = require('lodash');
+
+var ObjectId = mongoose.Types.ObjectId;
 
 /**
  * Create a article
@@ -21,6 +25,12 @@ exports.create = function(req, res) {
 				message: errorHandler.getErrorMessage(err)
 			});
 		} else {
+			//creating association
+			var postAssociation = new PostAssociation({
+				article: article._id,
+				user: req.user
+			});
+			postAssociation.save();
 			res.json(article);
 		}
 	});
@@ -94,6 +104,118 @@ exports.articleByID = function(req, res, next, id) {
 		req.article = article;
 		next();
 	});
+};
+
+exports.asked = function(req, res) {
+	// Article.find().sort('-created').populate('user', 'displayName').exec(function(err, articles) {
+	// 	if (err) {
+	// 		return res.status(400).send({
+	// 			message: errorHandler.getErrorMessage(err)
+	// 		});
+	// 	} else {
+	// 		res.json(articles);
+	// 	}
+	// });
+	var re = new RegExp(req.query.search, 'i');
+	var query = Article.find({});
+	var search = req.query.search;
+	query.where('title');
+	query.regex(re);
+	query.exec(function (err, articles){
+	  if (err) {
+				return res.status(400).send({
+					message: errorHandler.getErrorMessage(err)
+				});
+			} else {
+				console.log(req.query.search);
+				res.json(articles);
+			}
+	});
+
+};
+
+
+exports.userStats = function(req, res){
+
+	var user_id = req.user._id;
+	var articles_count = 0;
+	var answers_count = 0;
+
+	console.log(req.user);
+
+	var getArticlesCount = function(callback){
+
+		//getting number of questions posted by a user
+		Article.count({user: new ObjectId(user_id)}).exec(function(err, articlesCount){
+			if (err) {
+					return res.status(400).send({
+						message: errorHandler.getErrorMessage(err)
+					});
+				} else {
+					articles_count = articlesCount;
+					if (callback) callback();
+					
+					
+				}
+
+		});
+
+	};
+
+	var getAnswersCount = function(callback) {
+
+		//getting number of answers posted by a user
+		Answer.count({user: new ObjectId(user_id)}).exec(function(err, answersCount){
+			if (err) {
+					return res.status(400).send({
+						message: errorHandler.getErrorMessage(err)
+					});
+				} else {
+					answers_count = answersCount;
+					if (callback) callback();
+
+				}
+
+		});
+
+	};
+
+	//console.log(getArticlesCount(console.log('4')));
+
+	getArticlesCount(function(){
+		getAnswersCount(function(){
+		res.json({
+			articles_count: articles_count,
+			answers_count: answers_count
+		});
+
+		});
+	});
+
+	
+	
+};
+
+
+
+exports.search = function(req, res) {
+	var re = new RegExp(req.query.searchText, 'i');
+	var query = Article.find({});
+
+	var search = req.query.searchText;
+	query.where('title');
+	query.regex(re);
+	query.exec(function (err, articles){
+	  if (err) {
+				return res.status(400).send({
+					message: errorHandler.getErrorMessage(err)
+				});
+			} else {
+				console.log(req.query.searchText);
+				res.json(articles);
+			}
+	});
+
 };
 
 /**

@@ -1,0 +1,7 @@
+<div data-ng-repeat="answer in answers" class="list-group-item"  >
+	<small class="list-group-item-text posted-time">
+	<span data-ng-bind="answer.created | date:'medium'"></span>
+	</small>
+	<p class="list-group-item-text" data-ng-bind="answer.content">
+	</p>
+</div>
