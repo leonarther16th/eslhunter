@@ -13,7 +13,7 @@ var AnswerSchema = new Schema({
 	content: {
 		type: String,
 		default: '',
-		required: 'Please fill Answer name',
+		required: 'Please fill Answer content',
 		trim: true
 	},
 	created: {
@@ -29,6 +29,8 @@ var AnswerSchema = new Schema({
 		default: '',
 		trim: true
 	}
+
 });
+
 
 mongoose.model('Answer', AnswerSchema);

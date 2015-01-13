@@ -29,7 +29,7 @@ describe('Answer Model Unit Tests:', function() {
 
 		user.save(function() { 
 			answer = new Answer({
-				name: 'Answer Name',
+				content: 'Answer Name',
 				user: user
 			});
 
@@ -45,8 +45,8 @@ describe('Answer Model Unit Tests:', function() {
 			});
 		});
 
-		it('should be able to show an error when try to save without name', function(done) { 
-			answer.name = '';
+		it('should be able to show an error when try to save without content', function(done) {
+			answer.content = '';
 
 			return answer.save(function(err) {
 				should.exist(err);

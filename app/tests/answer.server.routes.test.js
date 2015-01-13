@@ -38,7 +38,7 @@ describe('Answer CRUD tests', function() {
 		// Save a user to the test db and create new Answer
 		user.save(function() {
 			answer = {
-				name: 'Answer Name'
+				content: 'Answer content'
 			};
 
 			done();
@@ -75,7 +75,7 @@ describe('Answer CRUD tests', function() {
 
 								// Set assertions
 								(answers[0].user._id).should.equal(userId);
-								(answers[0].name).should.match('Answer Name');
+								(answers[0].content).should.match('Answer content');
 
 								// Call the assertion callback
 								done();
@@ -94,9 +94,9 @@ describe('Answer CRUD tests', function() {
 			});
 	});
 
-	it('should not be able to save Answer instance if no name is provided', function(done) {
-		// Invalidate name field
-		answer.name = '';
+	it('should not be able to save Answer instance if no content is provided', function(done) {
+		// Invalidate content field
+		answer.content = '';
 
 		agent.post('/auth/signin')
 			.send(credentials)
@@ -114,7 +114,7 @@ describe('Answer CRUD tests', function() {
 					.expect(400)
 					.end(function(answerSaveErr, answerSaveRes) {
 						// Set message assertion
-						(answerSaveRes.body.message).should.match('Please fill Answer name');
+						(answerSaveRes.body.message).should.match('Please fill Answer content');
 						
 						// Handle Answer save error
 						done(answerSaveErr);
@@ -141,8 +141,8 @@ describe('Answer CRUD tests', function() {
 						// Handle Answer save error
 						if (answerSaveErr) done(answerSaveErr);
 
-						// Update Answer name
-						answer.name = 'WHY YOU GOTTA BE SO MEAN?';
+						// Update Answer content
+						answer.content = 'WHY YOU GOTTA BE SO MEAN?';
 
 						// Update existing Answer
 						agent.put('/answers/' + answerSaveRes.body._id)
@@ -154,7 +154,7 @@ describe('Answer CRUD tests', function() {
 
 								// Set assertions
 								(answerUpdateRes.body._id).should.equal(answerSaveRes.body._id);
-								(answerUpdateRes.body.name).should.match('WHY YOU GOTTA BE SO MEAN?');
+								(answerUpdateRes.body.content).should.match('WHY YOU GOTTA BE SO MEAN?');
 
 								// Call the assertion callback
 								done();
@@ -192,7 +192,7 @@ describe('Answer CRUD tests', function() {
 			request(app).get('/answers/' + answerObj._id)
 				.end(function(req, res) {
 					// Set assertion
-					res.body.should.be.an.Object.with.property('name', answer.name);
+					res.body.should.be.an.Object.with.property('content', answer.content);
 
 					// Call the assertion callback
 					done();
