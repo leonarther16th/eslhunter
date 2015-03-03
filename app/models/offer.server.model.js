@@ -23,7 +23,15 @@ var OfferSchema = new Schema({
 	user: {
 		type: Schema.ObjectId,
 		ref: 'User'
-	}
+	},
+    school: {
+        type: Schema.ObjectId,
+        ref: 'School'
+    },
+    regions: {
+        type: [Schema.ObjectId],
+        ref: 'Region'
+    }
 });
 
 mongoose.model('Offer', OfferSchema);

@@ -1,7 +1,7 @@
 'use strict';
 
 /**
- * Created by MoeKatib on 15-01-12.
+ * Created by Moe Katib on 15-01-12.
  */
 
 
