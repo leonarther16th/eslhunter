@@ -1,9 +1,9 @@
 'use strict';
 
 module.exports = {
-	db: 'mongodb://localhost/advize-dev',
+	db: 'mongodb://localhost/eslhunter-dev',
 	app: {
-		title: 'advize - Development Environment'
+		title: 'eslhunter - Development Environment'
 	},
 	facebook: {
 		clientID: process.env.FACEBOOK_ID || 'APP_ID',

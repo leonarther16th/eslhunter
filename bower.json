@@ -1,7 +1,7 @@
 {
-	"name": "advize",
+	"name": "eslhunter",
 	"version": "0.0.1",
-	"description": "Ask and contribute to a 100% anonymous advise around you.",
+	"description": "",
 	"dependencies": {
 		"bootstrap": "~3",
 		"angular": "~1.2",

@@ -6525,7 +6525,8 @@ footer .footer-below {
 }
 .trending,
 .question-title,
-.question-bottom {
+.question-bottom,
+.legend-color {
   background-color: #e15258;
   color: white;
   margin: 0;
@@ -6533,6 +6534,30 @@ footer .footer-below {
   border-radius: 4px 4px 0 0;
   padding: 1em;
   font-weight: bold;
+}
+.legend-gray {
+  background-color: #222222;
+  border: 1px solid #222222;
+}
+.legend-primary {
+  background-color: #2c3e50;
+  border: 1px solid #2c3e50;
+}
+.legend-success {
+  background-color: #5cb860;
+  border: 1px solid #5cb860;
+}
+.legend-info {
+  background-color: #3498db;
+  border: 1px solid #3498db;
+}
+.legend-warning {
+  background-color: #f39c12;
+  border: 1px solid #f39c12;
+}
+.legend-danger {
+  background-color: #e15258;
+  border: 1px solid #e15258;
 }
 .question-title {
   background-color: #2c3e50;
